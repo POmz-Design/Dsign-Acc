@@ -1,0 +1,32 @@
+LOGO INSTRUCTIONS
+==================
+
+The website references a logo file: logo.png
+
+OPTION 1: Use Your Existing Logo
+---------------------------------
+Save your Dsign Accounting logo (the teal checkmark with "Dsign ACCOUNTING" text) as:
+- Filename: logo.png
+- Location: Root directory of the project
+- Recommended size: 200px height (width auto)
+- Format: PNG with transparent background preferred
+
+OPTION 2: Use the SVG Placeholder
+----------------------------------
+A simple SVG placeholder has been created (logo.svg) that you can use temporarily.
+To use it, change this line in index.html:
+
+FROM: <img src="logo.png" alt="Dsign Accounting Logo" class="logo-img">
+TO:   <img src="logo.svg" alt="Dsign Accounting Logo" class="logo-img">
+
+LOGO SPECIFICATIONS
+-------------------
+- Brand Color: #17a2b8 (Teal)
+- File formats accepted: PNG, SVG, or WebP
+- Transparent background recommended
+- Optimal height: 50-60px for navbar
+- Should be clear and readable at small sizes
+
+CURRENT STATUS
+--------------
+A placeholder logo.svg has been created for you to use until you add your official logo.
