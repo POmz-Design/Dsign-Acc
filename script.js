@@ -66,13 +66,13 @@ ${data.message}
     `.trim();
 
     // Create mailto link
-    const mailtoLink = `mailto:info@dsignaccounting.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const mailtoLink = `mailto:info@dsign-accounting.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
     // Open email client
     window.location.href = mailtoLink;
 
     // Show success message
-    formMessage.textContent = 'กำลังเปิดโปรแกรมอีเมลของคุณ... หากไม่ทำงาน กรุณาติดต่อเราโดยตรงที่ info@dsignaccounting.com';
+    formMessage.textContent = 'กำลังเปิดโปรแกรมอีเมลของคุณ... หากไม่ทำงาน กรุณาติดต่อเราโดยตรงที่ info@dsign-accounting.com';
     formMessage.className = 'form-message success';
 
     // Reset form after delay
