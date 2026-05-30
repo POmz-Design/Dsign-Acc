@@ -1,0 +1,563 @@
+{
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "login": "Login",
+    "signup": "Sign up"
+  },
+  "Hero": {
+    "badge": "✨ New: Issue quotations and tax invoices online",
+    "badgeCta": "Login",
+    "title": "Full-service accounting firm — Dsign Accounting",
+    "subtitle": "Accounting and tax specialists you can rely on.",
+    "ctaConsult": "Free consultation",
+    "ctaServices": "Our services"
+  },
+  "Trust": {
+    "experience": "10+ years of experience",
+    "cpa": "CPA & CPD team",
+    "clients": "200+ companies served",
+    "support": "Replies within 24 hours"
+  },
+  "Services": {
+    "heading": "Our services",
+    "subheading": "Everything you need for accounting and tax.",
+    "items": {
+      "monthly": {
+        "title": "Monthly bookkeeping",
+        "desc": "Bookkeeping, monthly tax filings, and clear summary reports."
+      },
+      "annual": {
+        "title": "Annual financial closing",
+        "desc": "Year-end statements per Thai standards, with PND 50/51 filing."
+      },
+      "taxAdvisor": {
+        "title": "Tax advisory",
+        "desc": "Proper tax planning to reduce risk and maximize savings."
+      },
+      "audit": {
+        "title": "Audit services",
+        "desc": "Audited by licensed Certified Public Accountants (CPA)."
+      },
+      "setup": {
+        "title": "Accounting system setup",
+        "desc": "Design and install an accounting system that fits your business."
+      },
+      "registration": {
+        "title": "Company registration",
+        "desc": "Company registration, amendments, and VAT registration."
+      },
+      "taxPlanning": {
+        "title": "Tax planning",
+        "desc": "Long-term tax strategy and structural analysis."
+      },
+      "consulting": {
+        "title": "Business consulting",
+        "desc": "Business and financial advisory from seasoned professionals."
+      }
+    }
+  },
+  "About": {
+    "heading": "About us",
+    "p1": "Dsign Accounting is an accounting firm committed to professional accounting and tax services, serving Thai businesses for over 10 years.",
+    "p2": "Our team includes experienced Certified Public Accountants (CPA) and licensed bookkeepers (CPD), ready to advise and support every client need.",
+    "p3": "We believe that good accounting is the foundation of a business that grows sustainably — leave the numbers to us."
+  },
+  "Faq": {
+    "heading": "Frequently asked questions",
+    "items": {
+      "q1": {
+        "q": "How is the accounting fee calculated?",
+        "a": "It depends on the size of your business and document volume. Pricing starts at THB 2,500 per month. Contact us for an actual quote."
+      },
+      "q2": {
+        "q": "When does a new company need to start bookkeeping?",
+        "a": "Bookkeeping must start from the date of company registration, and tax returns must be filed per Revenue Department deadlines."
+      },
+      "q3": {
+        "q": "What is VAT and when must I register?",
+        "a": "VAT is a 7% value-added tax. Companies with annual revenue over THB 1.8 million must register for VAT within 30 days."
+      },
+      "q4": {
+        "q": "What is withholding tax?",
+        "a": "A tax the payer must withhold and remit to the Revenue Department — for services, rent, advertising, etc., typically 1–5%."
+      },
+      "q5": {
+        "q": "How do I send documents to your office?",
+        "a": "Paper, digital files, LINE, email, or via our upcoming web application."
+      },
+      "q6": {
+        "q": "How long does annual closing take?",
+        "a": "Typically 30–45 days after all documents are received, depending on business complexity."
+      },
+      "q7": {
+        "q": "What if I'm audited by the Revenue Department?",
+        "a": "Our team supports you fully — preparing documents, clarifying records, and negotiating with officials."
+      },
+      "q8": {
+        "q": "What areas do you serve?",
+        "a": "We serve all of Thailand via online tools, with on-site teams in Bangkok and surroundings."
+      }
+    }
+  },
+  "Contact": {
+    "heading": "Contact us",
+    "subheading": "Free consultation. No obligation.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "addressValue": "Bangkok, Thailand",
+    "formName": "Full name",
+    "formEmail": "Email",
+    "formMessage": "Message",
+    "formSubmit": "Send message"
+  },
+  "Footer": {
+    "rights": "All rights reserved",
+    "tagline": "Full-service accounting firm"
+  },
+  "Auth": {
+    "loginTitle": "Sign in",
+    "loginSubtitle": "Sign in to manage your accounting documents.",
+    "signupTitle": "Create account",
+    "signupSubtitle": "Create a new account to get started.",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "submitLogin": "Sign in",
+    "submitSignup": "Create account",
+    "or": "or",
+    "google": "Continue with Google",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signupLink": "Sign up",
+    "loginLink": "Sign in",
+    "errorInvalid": "Invalid email or password.",
+    "errorMismatch": "Passwords don't match.",
+    "errorExists": "This email is already registered.",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "App": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "quotations": "Quotations",
+      "invoices": "Invoices",
+      "receipts": "Receipts",
+      "wht": "Withholding tax",
+      "taxEstimator": "Tax estimator",
+      "customers": "Customers",
+      "items": "Items",
+      "settings": "Settings"
+    },
+    "topbar": {
+      "signOut": "Sign out"
+    },
+    "dashboard": {
+      "welcome": "Welcome",
+      "invoicesThisMonth": "Invoices this month",
+      "vatCollected": "VAT collected",
+      "whtWithheld": "WHT withheld",
+      "outstanding": "Outstanding",
+      "trendTitle": "Monthly invoice trend",
+      "trendSubtitle": "Last 6 months — hover a bar for the exact total.",
+      "trendEmpty": "No invoices yet to chart.",
+      "recentTitle": "Recent documents",
+      "recentSubtitle": "Your 10 most recently issued documents.",
+      "recentEmpty": "No documents yet.",
+      "topCustomersTitle": "Top customers this month",
+      "topCustomersSubtitle": "By total invoice value this calendar month.",
+      "topCustomersEmpty": "No invoices this month yet.",
+      "type": "Type",
+      "invoiceCount": "Invoices"
+    },
+    "placeholder": {
+      "comingSoon": "This feature is in development.",
+      "phase": "Coming in Phase {phase}"
+    },
+    "pages": {
+      "quotations": "Quotations",
+      "invoices": "Invoices",
+      "receipts": "Receipts",
+      "wht": "Withholding tax",
+      "taxEstimator": "Tax estimator",
+      "customers": "Customers",
+      "items": "Items",
+      "settings": "Settings"
+    }
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "th": "ไทย",
+    "en": "English"
+  },
+  "Common": {
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "loading": "Loading...",
+    "required": "Required",
+    "yes": "Yes",
+    "no": "No",
+    "hintDigits": "Must be {count} digits",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorValidation": "Please check the form for errors."
+  },
+  "Settings": {
+    "title": "Company settings",
+    "subtitle": "These details appear on every document you issue.",
+    "onboardingBanner": "Set up your company info to start issuing documents.",
+    "savedSuccess": "Saved successfully.",
+    "savedError": "Save failed. Please try again.",
+    "fields": {
+      "nameTh": "Company name (Thai)",
+      "nameEn": "Company name (English)",
+      "tin": "Taxpayer ID",
+      "branchCode": "Branch code",
+      "branchCodeHint": "Head office uses 00000.",
+      "addressTh": "Address (Thai)",
+      "addressEn": "Address (English)",
+      "phone": "Phone",
+      "email": "Email",
+      "logoUrl": "Logo URL",
+      "signatureUrl": "Signature URL",
+      "uploadComingSoon": "Upload coming in a later phase — paste a URL for now.",
+      "defaultVatRate": "Default VAT rate (%)",
+      "defaultCurrency": "Default currency"
+    }
+  },
+  "Customers": {
+    "title": "Customers",
+    "subtitle": "Manage your customer list.",
+    "addButton": "New customer",
+    "createTitle": "Add a new customer",
+    "editTitle": "Edit customer",
+    "deleteTitle": "Delete customer",
+    "deleteConfirm": "Delete \"{name}\"? This cannot be undone.",
+    "empty": "No customers yet — add your first.",
+    "saveError": "Save failed. Please try again.",
+    "table": {
+      "name": "Name",
+      "tin": "TIN",
+      "email": "Email",
+      "phone": "Phone",
+      "actions": "Actions"
+    },
+    "fields": {
+      "name": "Name",
+      "tin": "Taxpayer ID",
+      "branchCode": "Branch code",
+      "isJuristic": "Juristic entity (company / partnership)",
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone",
+      "notes": "Notes"
+    }
+  },
+  "Documents": {
+    "types": {
+      "quotation": "Quotation",
+      "invoice": "Tax invoice",
+      "receipt": "Receipt",
+      "wht": "WHT certificate"
+    },
+    "status": {
+      "draft": "Draft",
+      "issued": "Issued",
+      "paid": "Paid",
+      "void": "Void"
+    },
+    "table": {
+      "runningNumber": "Document #",
+      "customer": "Customer",
+      "issueDate": "Issue date",
+      "dueDate": "Due date",
+      "total": "Total",
+      "status": "Status",
+      "description": "Description",
+      "qty": "Qty",
+      "unitPrice": "Unit price",
+      "discount": "Discount",
+      "amount": "Amount"
+    },
+    "subtotal": "Subtotal",
+    "vat": "VAT 7%",
+    "total": "Total",
+    "wht": "Withholding tax",
+    "netPayable": "Net payable",
+    "notes": "Notes",
+    "voidTitle": "Void this document?",
+    "voidConfirm": "The document will be marked as void. It will remain in the audit log but cannot be edited or used.",
+    "actions": {
+      "downloadPdf": "Download PDF",
+      "void": "Void",
+      "convertToInvoice": "Convert to invoice",
+      "generateReceipt": "Generate receipt",
+      "phase3": "Coming in Phase 3"
+    },
+    "filters": {
+      "search": "Search",
+      "searchPlaceholder": "Document # or customer name",
+      "status": "Status",
+      "statusAll": "All",
+      "from": "From",
+      "to": "To",
+      "noMatches": "No documents match your filters."
+    }
+  },
+  "Quotations": {
+    "title": "Quotations",
+    "subtitle": "Quotes you've sent to customers.",
+    "newButton": "New quotation",
+    "newTitle": "New quotation",
+    "empty": "No quotations yet — create your first."
+  },
+  "Invoices": {
+    "title": "Tax invoices",
+    "subtitle": "Tax invoices you've issued.",
+    "newButton": "New tax invoice",
+    "newTitle": "New tax invoice",
+    "empty": "No invoices yet — create your first."
+  },
+  "Receipts": {
+    "title": "Receipts",
+    "subtitle": "Receipts you've issued.",
+    "newButton": "New receipt",
+    "newTitle": "New receipt",
+    "empty": "No receipts yet — create your first."
+  },
+  "DocumentForm": {
+    "customer": "Customer",
+    "customerPlaceholder": "Select a customer",
+    "issueDate": "Issue date",
+    "dueDate": "Due date",
+    "lines": "Line items",
+    "addFromCatalog": "Add line from catalog",
+    "addFreeText": "Add free-text line",
+    "noLinesYet": "No lines yet. Add a line above to get started.",
+    "table": {
+      "description": "Description",
+      "descriptionPlaceholder": "Describe the item or service",
+      "qty": "Qty",
+      "unitPrice": "Unit price",
+      "discount": "Disc %",
+      "vat": "VAT",
+      "amount": "Amount"
+    },
+    "whtRate": "Withholding tax rate",
+    "whtNone": "None",
+    "notes": "Notes (printed on the PDF)",
+    "issue": "Issue document",
+    "errors": {
+      "customerRequired": "Please choose a customer.",
+      "noLines": "Add at least one line item.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "Wht": {
+    "title": "Withholding tax certificates",
+    "subtitle": "ภ.ง.ด. 3 / ภ.ง.ด. 53 certificates you've issued.",
+    "newButton": "New WHT certificate",
+    "newTitle": "Issue WHT certificate",
+    "empty": "No certificates yet — issue your first.",
+    "taxYear": "Tax year",
+    "paymentMethod": "Payment method",
+    "formPnd3Short": "ภ.ง.ด. 3",
+    "formPnd53Short": "ภ.ง.ด. 53",
+    "issueFromInvoice": "Issue WHT certificate",
+    "status": {
+      "issued": "Issued",
+      "void": "Void"
+    },
+    "table": {
+      "runningNumber": "Cert #",
+      "formType": "Form",
+      "payee": "Payee",
+      "paymentDate": "Payment date",
+      "gross": "Gross",
+      "rate": "Rate",
+      "withheld": "Withheld",
+      "incomeType": "Income type",
+      "description": "Description"
+    },
+    "paymentMethodOptions": {
+      "withheld": "Withheld from payment (หัก ณ ที่จ่าย)",
+      "paid_for_payee": "Paid by payer in full (ออกให้ผู้ถูกหักตลอดไป)",
+      "other": "Other (อื่นๆ)"
+    }
+  },
+  "WhtForm": {
+    "payee": "Payee (customer)",
+    "payeePlaceholder": "Select a customer",
+    "paymentDate": "Payment date",
+    "formType": "Form type",
+    "formTypePnd3": "ภ.ง.ด. 3 (individual)",
+    "formTypePnd53": "ภ.ง.ด. 53 (juristic)",
+    "lines": "Income types",
+    "addLine": "Add income type",
+    "noLinesYet": "No income types yet — add one to get started.",
+    "fromInvoice": "Prefilled from invoice {number}",
+    "paymentMethod": "Payment type",
+    "paymentMethodOptions": {
+      "withheld": "Withheld from payment (หัก ณ ที่จ่าย)",
+      "paid_for_payee": "Paid by payer in full (ออกให้ผู้ถูกหักตลอดไป)",
+      "other": "Other (อื่นๆ)"
+    },
+    "notes": "Notes (printed on the PDF)",
+    "totalGross": "Total gross",
+    "totalWithheld": "Total withheld",
+    "issue": "Issue certificate",
+    "table": {
+      "code": "Income type",
+      "description": "Description",
+      "descriptionPlaceholder": "What was paid for",
+      "paymentDate": "Payment date",
+      "gross": "Gross amount",
+      "rate": "Rate %",
+      "withheld": "Withheld"
+    },
+    "errors": {
+      "customerRequired": "Please choose a payee.",
+      "noLines": "Add at least one income type.",
+      "formTypeMismatch": "Form type does not match the payee.",
+      "customerNotFound": "Selected payee no longer exists.",
+      "invoiceNotFound": "Linked invoice no longer exists.",
+      "noCompany": "Set up your company profile before issuing certificates.",
+      "validation": "Some fields are invalid. Please review and try again.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "WhtIncomeTypes": {
+    "40_1": "40(1) Salary / Wages",
+    "40_2": "40(2) Commissions / Fees",
+    "40_3": "40(3) Goodwill / Royalties",
+    "40_4_a": "40(4)(a) Interest",
+    "40_4_b": "40(4)(b) Dividends",
+    "40_5": "40(5) Rent",
+    "40_6": "40(6) Professional fees",
+    "40_7": "40(7) Contractor fees",
+    "40_8": "40(8) Services / Other"
+  },
+  "WhtPayment": {
+    "withheld": "Withheld from payment",
+    "paid_for_payee": "Paid by payer in full",
+    "other": "Other"
+  },
+  "EmailSend": {
+    "button": "Send to customer",
+    "title": "Send PDF to customer",
+    "description": "Email the PDF as an attachment. The customer email is pre-filled when available.",
+    "toLabel": "Customer email",
+    "send": "Send email",
+    "sending": "Sending...",
+    "success": "Email sent to {email}.",
+    "lastSent": "Last sent to {email} on {when}.",
+    "errors": {
+      "required": "Please enter an email address.",
+      "noEmail": "No customer email on file — enter one above.",
+      "invalidEmail": "That doesn't look like a valid email address.",
+      "noCompany": "Set up your company profile before sending email.",
+      "notFound": "Document no longer exists.",
+      "voided": "Cannot email a voided document.",
+      "pdfFailed": "PDF generation failed. Please try again.",
+      "sendFailed": "Email provider rejected the request. Check the server logs.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "PitForm": {
+    "title": "Personal income tax estimator",
+    "subtitle": "A quick estimate of your ภ.ง.ด. 90 / 91 liability — useful for tax planning, not a substitute for professional advice.",
+    "formTypeLabel": "Form type",
+    "formType": {
+      "pnd90": "ภ.ง.ด. 90 (multiple income types)",
+      "pnd91": "ภ.ง.ด. 91 (salary only)"
+    },
+    "section": {
+      "basics": "Income",
+      "basicsHint": "Annual gross income and any WHT already paid.",
+      "familyAllowances": "Family allowances",
+      "familyAllowancesHint": "Spouse (if no income), children, parents, and disabled dependents.",
+      "financialAllowances": "Financial allowances and donations",
+      "financialAllowancesHint": "Caps reflect 2024 Thai law — verify against the latest annual update before filing."
+    },
+    "grossIncome": "Gross annual income (THB)",
+    "grossIncomeHint": "Total income for the tax year, before deductions.",
+    "withholdingPaid": "Withholding tax already paid (THB)",
+    "withholdingPaidHint": "Sum of WHT certificates received during the year.",
+    "spouse": "Spouse with no income",
+    "children": "Number of children",
+    "childrenHint": "30,000 THB per child.",
+    "parents": "Number of parents cared for",
+    "parentsHint": "30,000 THB each, up to 4.",
+    "disabled": "Disabled dependents",
+    "disabledHint": "60,000 THB each.",
+    "socialSecurity": "Social security paid (THB)",
+    "providentFund": "Provident fund / RMF / SSF (THB)",
+    "mortgageInterest": "Mortgage interest (THB)",
+    "lifeInsurance": "Life insurance premium (THB)",
+    "healthInsurance": "Health insurance premium (THB)",
+    "parentHealthInsurance": "Parent health insurance (THB)",
+    "charityDonations": "Charity donations (THB)",
+    "educationDonations": "Education / sports donations (THB) — counts double",
+    "capHint": "Cap: {amount} THB",
+    "donationCapHint": "Capped at 10% of income after other deductions.",
+    "disclaimer": "Estimate only. Consult a CPA before filing.",
+    "calculate": "Calculate",
+    "save": "Save calculation",
+    "saveComingSoon": "Saving calculations is coming soon.",
+    "results": {
+      "title": "Calculation result",
+      "subtitle": "Bracket-by-bracket breakdown.",
+      "grossIncome": "Gross income",
+      "expenseDeduction": "Expense deduction (50% cap 100k)",
+      "totalAllowances": "Total allowances",
+      "netIncome": "Net taxable income",
+      "bracket": "Bracket (THB)",
+      "taxable": "Taxable",
+      "rate": "Rate",
+      "taxInBracket": "Tax",
+      "taxBefore": "Tax before WHT",
+      "withholdingPaid": "WHT already paid",
+      "refund": "Refund expected",
+      "additionalDue": "Additional tax due",
+      "noTax": "No tax owed at this income level.",
+      "disclaimer": "Verify with a tax professional before filing."
+    }
+  },
+  "Items": {
+    "title": "Items",
+    "subtitle": "Goods and services you sell.",
+    "addButton": "New item",
+    "createTitle": "Add a new item",
+    "editTitle": "Edit item",
+    "deleteTitle": "Delete item",
+    "deleteConfirm": "Delete \"{name}\"? This cannot be undone.",
+    "empty": "No items yet — add your first.",
+    "saveError": "Save failed. Please try again.",
+    "table": {
+      "name": "Name",
+      "unit": "Unit",
+      "unitPrice": "Unit price",
+      "vat": "VAT",
+      "wht": "WHT",
+      "active": "Active",
+      "actions": "Actions"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Description",
+      "unit": "Unit",
+      "unitPrice": "Unit price (THB)",
+      "vatApplicable": "VAT applicable",
+      "whtRate": "Withholding tax rate",
+      "whtRateHint": "Pick \"None\" if no WHT applies.",
+      "whtNone": "None",
+      "isActive": "Active"
+    }
+  }
+}
