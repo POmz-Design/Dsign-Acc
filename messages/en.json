@@ -1,0 +1,282 @@
+{
+  "Nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "login": "Login",
+    "signup": "Sign up"
+  },
+  "Hero": {
+    "badge": "✨ New: Issue quotations and tax invoices online",
+    "badgeCta": "Login",
+    "title": "Full-service accounting firm — Dsign Accounting",
+    "subtitle": "Accounting and tax specialists you can rely on.",
+    "ctaConsult": "Free consultation",
+    "ctaServices": "Our services"
+  },
+  "Trust": {
+    "experience": "10+ years of experience",
+    "cpa": "CPA & CPD team",
+    "clients": "200+ companies served",
+    "support": "Replies within 24 hours"
+  },
+  "Services": {
+    "heading": "Our services",
+    "subheading": "Everything you need for accounting and tax.",
+    "items": {
+      "monthly": {
+        "title": "Monthly bookkeeping",
+        "desc": "Bookkeeping, monthly tax filings, and clear summary reports."
+      },
+      "annual": {
+        "title": "Annual financial closing",
+        "desc": "Year-end statements per Thai standards, with PND 50/51 filing."
+      },
+      "taxAdvisor": {
+        "title": "Tax advisory",
+        "desc": "Proper tax planning to reduce risk and maximize savings."
+      },
+      "audit": {
+        "title": "Audit services",
+        "desc": "Audited by licensed Certified Public Accountants (CPA)."
+      },
+      "setup": {
+        "title": "Accounting system setup",
+        "desc": "Design and install an accounting system that fits your business."
+      },
+      "registration": {
+        "title": "Company registration",
+        "desc": "Company registration, amendments, and VAT registration."
+      },
+      "taxPlanning": {
+        "title": "Tax planning",
+        "desc": "Long-term tax strategy and structural analysis."
+      },
+      "consulting": {
+        "title": "Business consulting",
+        "desc": "Business and financial advisory from seasoned professionals."
+      }
+    }
+  },
+  "About": {
+    "heading": "About us",
+    "p1": "Dsign Accounting is an accounting firm committed to professional accounting and tax services, serving Thai businesses for over 10 years.",
+    "p2": "Our team includes experienced Certified Public Accountants (CPA) and licensed bookkeepers (CPD), ready to advise and support every client need.",
+    "p3": "We believe that good accounting is the foundation of a business that grows sustainably — leave the numbers to us."
+  },
+  "Faq": {
+    "heading": "Frequently asked questions",
+    "items": {
+      "q1": {
+        "q": "How is the accounting fee calculated?",
+        "a": "It depends on the size of your business and document volume. Pricing starts at THB 2,500 per month. Contact us for an actual quote."
+      },
+      "q2": {
+        "q": "When does a new company need to start bookkeeping?",
+        "a": "Bookkeeping must start from the date of company registration, and tax returns must be filed per Revenue Department deadlines."
+      },
+      "q3": {
+        "q": "What is VAT and when must I register?",
+        "a": "VAT is a 7% value-added tax. Companies with annual revenue over THB 1.8 million must register for VAT within 30 days."
+      },
+      "q4": {
+        "q": "What is withholding tax?",
+        "a": "A tax the payer must withhold and remit to the Revenue Department — for services, rent, advertising, etc., typically 1–5%."
+      },
+      "q5": {
+        "q": "How do I send documents to your office?",
+        "a": "Paper, digital files, LINE, email, or via our upcoming web application."
+      },
+      "q6": {
+        "q": "How long does annual closing take?",
+        "a": "Typically 30–45 days after all documents are received, depending on business complexity."
+      },
+      "q7": {
+        "q": "What if I'm audited by the Revenue Department?",
+        "a": "Our team supports you fully — preparing documents, clarifying records, and negotiating with officials."
+      },
+      "q8": {
+        "q": "What areas do you serve?",
+        "a": "We serve all of Thailand via online tools, with on-site teams in Bangkok and surroundings."
+      }
+    }
+  },
+  "Contact": {
+    "heading": "Contact us",
+    "subheading": "Free consultation. No obligation.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "addressValue": "Bangkok, Thailand",
+    "formName": "Full name",
+    "formEmail": "Email",
+    "formMessage": "Message",
+    "formSubmit": "Send message"
+  },
+  "Footer": {
+    "rights": "All rights reserved",
+    "tagline": "Full-service accounting firm"
+  },
+  "Auth": {
+    "loginTitle": "Sign in",
+    "loginSubtitle": "Sign in to manage your accounting documents.",
+    "signupTitle": "Create account",
+    "signupSubtitle": "Create a new account to get started.",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "submitLogin": "Sign in",
+    "submitSignup": "Create account",
+    "or": "or",
+    "google": "Continue with Google",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signupLink": "Sign up",
+    "loginLink": "Sign in",
+    "errorInvalid": "Invalid email or password.",
+    "errorMismatch": "Passwords don't match.",
+    "errorExists": "This email is already registered.",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "App": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "quotations": "Quotations",
+      "invoices": "Invoices",
+      "receipts": "Receipts",
+      "wht": "Withholding tax",
+      "taxEstimator": "Tax estimator",
+      "customers": "Customers",
+      "items": "Items",
+      "settings": "Settings"
+    },
+    "topbar": {
+      "signOut": "Sign out"
+    },
+    "dashboard": {
+      "welcome": "Welcome",
+      "invoicesThisMonth": "Invoices this month",
+      "vatCollected": "VAT collected",
+      "whtWithheld": "WHT withheld",
+      "outstanding": "Outstanding"
+    },
+    "placeholder": {
+      "comingSoon": "This feature is in development.",
+      "phase": "Coming in Phase {phase}"
+    },
+    "pages": {
+      "quotations": "Quotations",
+      "invoices": "Invoices",
+      "receipts": "Receipts",
+      "wht": "Withholding tax",
+      "taxEstimator": "Tax estimator",
+      "customers": "Customers",
+      "items": "Items",
+      "settings": "Settings"
+    }
+  },
+  "LocaleSwitcher": {
+    "label": "Language",
+    "th": "ไทย",
+    "en": "English"
+  },
+  "Common": {
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "loading": "Loading...",
+    "required": "Required",
+    "yes": "Yes",
+    "no": "No",
+    "hintDigits": "Must be {count} digits",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorValidation": "Please check the form for errors."
+  },
+  "Settings": {
+    "title": "Company settings",
+    "subtitle": "These details appear on every document you issue.",
+    "onboardingBanner": "Set up your company info to start issuing documents.",
+    "savedSuccess": "Saved successfully.",
+    "savedError": "Save failed. Please try again.",
+    "fields": {
+      "nameTh": "Company name (Thai)",
+      "nameEn": "Company name (English)",
+      "tin": "Taxpayer ID",
+      "branchCode": "Branch code",
+      "branchCodeHint": "Head office uses 00000.",
+      "addressTh": "Address (Thai)",
+      "addressEn": "Address (English)",
+      "phone": "Phone",
+      "email": "Email",
+      "logoUrl": "Logo URL",
+      "signatureUrl": "Signature URL",
+      "uploadComingSoon": "Upload coming in a later phase — paste a URL for now.",
+      "defaultVatRate": "Default VAT rate (%)",
+      "defaultCurrency": "Default currency"
+    }
+  },
+  "Customers": {
+    "title": "Customers",
+    "subtitle": "Manage your customer list.",
+    "addButton": "New customer",
+    "createTitle": "Add a new customer",
+    "editTitle": "Edit customer",
+    "deleteTitle": "Delete customer",
+    "deleteConfirm": "Delete \"{name}\"? This cannot be undone.",
+    "empty": "No customers yet — add your first.",
+    "saveError": "Save failed. Please try again.",
+    "table": {
+      "name": "Name",
+      "tin": "TIN",
+      "email": "Email",
+      "phone": "Phone",
+      "actions": "Actions"
+    },
+    "fields": {
+      "name": "Name",
+      "tin": "Taxpayer ID",
+      "branchCode": "Branch code",
+      "isJuristic": "Juristic entity (company / partnership)",
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone",
+      "notes": "Notes"
+    }
+  },
+  "Items": {
+    "title": "Items",
+    "subtitle": "Goods and services you sell.",
+    "addButton": "New item",
+    "createTitle": "Add a new item",
+    "editTitle": "Edit item",
+    "deleteTitle": "Delete item",
+    "deleteConfirm": "Delete \"{name}\"? This cannot be undone.",
+    "empty": "No items yet — add your first.",
+    "saveError": "Save failed. Please try again.",
+    "table": {
+      "name": "Name",
+      "unit": "Unit",
+      "unitPrice": "Unit price",
+      "vat": "VAT",
+      "wht": "WHT",
+      "active": "Active",
+      "actions": "Actions"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Description",
+      "unit": "Unit",
+      "unitPrice": "Unit price (THB)",
+      "vatApplicable": "VAT applicable",
+      "whtRate": "Withholding tax rate",
+      "whtRateHint": "Pick \"None\" if no WHT applies.",
+      "whtNone": "None",
+      "isActive": "Active"
+    }
+  }
+}
