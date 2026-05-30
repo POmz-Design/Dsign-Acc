@@ -1,13 +1,10 @@
-import { Readable } from "node:stream";
 import { NextRequest, NextResponse } from "next/server";
-import { renderToStream } from "@react-pdf/renderer";
 import { and, eq } from "drizzle-orm";
-import React from "react";
 
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { companies, whtCertificates } from "@/lib/db/schema";
-import { WhtCertificatePDF } from "@/components/pdf/wht-certificate-pdf";
+import { renderWhtPdfBuffer } from "@/lib/pdf/render";
 import type { WhtCertificatePdfData } from "@/components/pdf/wht-certificate-pdf";
 import type {
   CompanySnapshot,
@@ -64,16 +61,9 @@ export async function GET(
     lines: cert.incomeTypes as WhtIncomeLine[],
   };
 
-  const nodeStream = await renderToStream(
-    React.createElement(WhtCertificatePDF, { data }),
-  );
+  const pdfBuffer = await renderWhtPdfBuffer(data);
 
-  // Node Readable → Web ReadableStream (Node 20+).
-  const webStream = Readable.toWeb(
-    nodeStream as unknown as Readable,
-  ) as ReadableStream<Uint8Array>;
-
-  return new NextResponse(webStream, {
+  return new NextResponse(pdfBuffer, {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Disposition": `inline; filename="${cert.runningNumber}.pdf"`,

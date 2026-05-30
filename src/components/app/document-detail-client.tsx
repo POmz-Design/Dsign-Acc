@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/dialog";
 import { Link, useRouter } from "@/i18n/routing";
 import { voidDocument } from "@/app/actions/documents";
+import { sendDocumentEmail } from "@/app/actions/email";
+import { SendEmailDialog } from "@/components/app/send-email-dialog";
 import { cn } from "@/lib/utils";
 import type { DocumentRow, DocumentLineRow } from "@/lib/db/schema";
 
@@ -45,7 +47,11 @@ export function DocumentDetailClient({ document: doc, lines }: Props) {
   const [pending, startTransition] = useTransition();
   const [confirmVoid, setConfirmVoid] = useState(false);
 
-  const customer = doc.customerSnapshot as { name: string; tin: string | null };
+  const customer = doc.customerSnapshot as {
+    name: string;
+    tin: string | null;
+    email: string | null;
+  };
   const isVoid = doc.status === "void";
   const isQuotation = doc.type === "quotation";
   const isInvoice = doc.type === "invoice";
@@ -87,6 +93,16 @@ export function DocumentDetailClient({ document: doc, lines }: Props) {
               <span className="ml-2">{t("actions.downloadPdf")}</span>
             </a>
           </Button>
+          {!isVoid ? (
+            <SendEmailDialog
+              initialEmail={customer.email ?? null}
+              sentAt={doc.sentAt ? doc.sentAt.toISOString() : null}
+              lastSentTo={doc.lastSentTo ?? null}
+              action={(toEmail) =>
+                sendDocumentEmail({ documentId: doc.id, toEmail })
+              }
+            />
+          ) : null}
           {!isVoid ? (
             <Button
               variant="outline"

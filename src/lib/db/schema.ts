@@ -196,6 +196,11 @@ export const documents = pgTable(
     currency: text("currency").notNull().default("THB"),
     jsonPayload: jsonb("jsonPayload").notNull(),
     issuedAt: timestamp("issuedAt", { mode: "date" }),
+    // Phase 5: email send tracking. `sentAt` is the most-recent successful
+    // send; `lastSentTo` keeps the recipient string so the UI can show
+    // "Sent to alice@x.com on 2026-01-02" without a separate audit table.
+    sentAt: timestamp("sentAt", { mode: "date" }),
+    lastSentTo: text("lastSentTo"),
     createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
     updatedAt: timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
   },
@@ -272,6 +277,9 @@ export const whtCertificates = pgTable(
     notes: text("notes"),
     status: text("status").notNull().default("issued"),
     issuedAt: timestamp("issuedAt", { mode: "date" }),
+    // Phase 5: mirrors `documents.sentAt` / `lastSentTo` — see comment there.
+    sentAt: timestamp("sentAt", { mode: "date" }),
+    lastSentTo: text("lastSentTo"),
     createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
     updatedAt: timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
   },

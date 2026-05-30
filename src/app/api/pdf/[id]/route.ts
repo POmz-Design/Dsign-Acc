@@ -1,13 +1,10 @@
-import { Readable } from "node:stream";
 import { NextRequest, NextResponse } from "next/server";
-import { renderToStream } from "@react-pdf/renderer";
 import { and, eq } from "drizzle-orm";
-import React from "react";
 
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { companies, documents } from "@/lib/db/schema";
-import { DocumentPDF } from "@/components/pdf/document-pdf";
+import { renderDocumentPdfBuffer } from "@/lib/pdf/render";
 import type { DocumentPayload } from "@/lib/documents/types";
 
 // Node runtime — @react-pdf/renderer requires Node APIs (Buffer, streams,
@@ -44,17 +41,9 @@ export async function GET(
   }
 
   const payload = doc.jsonPayload as DocumentPayload;
-  const nodeStream = await renderToStream(
-    React.createElement(DocumentPDF, { payload }),
-  );
+  const pdfBuffer = await renderDocumentPdfBuffer(payload);
 
-  // @react-pdf/renderer returns a Node Readable. NextResponse needs a Web
-  // ReadableStream — Node 20+ provides `Readable.toWeb` for the cast.
-  const webStream = Readable.toWeb(
-    nodeStream as unknown as Readable,
-  ) as ReadableStream<Uint8Array>;
-
-  return new NextResponse(webStream, {
+  return new NextResponse(pdfBuffer, {
     headers: {
       "Content-Type": "application/pdf",
       "Content-Disposition": `inline; filename="${doc.runningNumber}.pdf"`,

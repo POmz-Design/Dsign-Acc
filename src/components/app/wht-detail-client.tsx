@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/dialog";
 import { useRouter } from "@/i18n/routing";
 import { voidWhtCertificate } from "@/app/actions/wht";
+import { sendWhtEmail } from "@/app/actions/email";
+import { SendEmailDialog } from "@/components/app/send-email-dialog";
 import { cn } from "@/lib/utils";
 import {
   WHT_INCOME_TYPES,
@@ -52,6 +54,7 @@ export function WhtDetailClient({ certificate: cert, locale }: Props) {
   const customer = cert.customerSnapshot as {
     name: string;
     tin: string | null;
+    email: string | null;
   };
   const lines = cert.incomeTypes as WhtIncomeLine[];
   const isVoid = cert.status === "void";
@@ -97,6 +100,16 @@ export function WhtDetailClient({ certificate: cert, locale }: Props) {
               <span className="ml-2">{tDoc("actions.downloadPdf")}</span>
             </a>
           </Button>
+          {!isVoid ? (
+            <SendEmailDialog
+              initialEmail={customer.email ?? null}
+              sentAt={cert.sentAt ? cert.sentAt.toISOString() : null}
+              lastSentTo={cert.lastSentTo ?? null}
+              action={(toEmail) =>
+                sendWhtEmail({ certificateId: cert.id, toEmail })
+              }
+            />
+          ) : null}
           {!isVoid ? (
             <Button
               variant="outline"
