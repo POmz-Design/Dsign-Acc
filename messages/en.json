@@ -338,6 +338,95 @@
       "generic": "Something went wrong. Please try again."
     }
   },
+  "Wht": {
+    "title": "Withholding tax certificates",
+    "subtitle": "ภ.ง.ด. 3 / ภ.ง.ด. 53 certificates you've issued.",
+    "newButton": "New WHT certificate",
+    "newTitle": "Issue WHT certificate",
+    "empty": "No certificates yet — issue your first.",
+    "taxYear": "Tax year",
+    "paymentMethod": "Payment method",
+    "formPnd3Short": "ภ.ง.ด. 3",
+    "formPnd53Short": "ภ.ง.ด. 53",
+    "issueFromInvoice": "Issue WHT certificate",
+    "status": {
+      "issued": "Issued",
+      "void": "Void"
+    },
+    "table": {
+      "runningNumber": "Cert #",
+      "formType": "Form",
+      "payee": "Payee",
+      "paymentDate": "Payment date",
+      "gross": "Gross",
+      "rate": "Rate",
+      "withheld": "Withheld",
+      "incomeType": "Income type",
+      "description": "Description"
+    },
+    "paymentMethodOptions": {
+      "withheld": "Withheld from payment (หัก ณ ที่จ่าย)",
+      "paid_for_payee": "Paid by payer in full (ออกให้ผู้ถูกหักตลอดไป)",
+      "other": "Other (อื่นๆ)"
+    }
+  },
+  "WhtForm": {
+    "payee": "Payee (customer)",
+    "payeePlaceholder": "Select a customer",
+    "paymentDate": "Payment date",
+    "formType": "Form type",
+    "formTypePnd3": "ภ.ง.ด. 3 (individual)",
+    "formTypePnd53": "ภ.ง.ด. 53 (juristic)",
+    "lines": "Income types",
+    "addLine": "Add income type",
+    "noLinesYet": "No income types yet — add one to get started.",
+    "fromInvoice": "Prefilled from invoice {number}",
+    "paymentMethod": "Payment type",
+    "paymentMethodOptions": {
+      "withheld": "Withheld from payment (หัก ณ ที่จ่าย)",
+      "paid_for_payee": "Paid by payer in full (ออกให้ผู้ถูกหักตลอดไป)",
+      "other": "Other (อื่นๆ)"
+    },
+    "notes": "Notes (printed on the PDF)",
+    "totalGross": "Total gross",
+    "totalWithheld": "Total withheld",
+    "issue": "Issue certificate",
+    "table": {
+      "code": "Income type",
+      "description": "Description",
+      "descriptionPlaceholder": "What was paid for",
+      "paymentDate": "Payment date",
+      "gross": "Gross amount",
+      "rate": "Rate %",
+      "withheld": "Withheld"
+    },
+    "errors": {
+      "customerRequired": "Please choose a payee.",
+      "noLines": "Add at least one income type.",
+      "formTypeMismatch": "Form type does not match the payee.",
+      "customerNotFound": "Selected payee no longer exists.",
+      "invoiceNotFound": "Linked invoice no longer exists.",
+      "noCompany": "Set up your company profile before issuing certificates.",
+      "validation": "Some fields are invalid. Please review and try again.",
+      "generic": "Something went wrong. Please try again."
+    }
+  },
+  "WhtIncomeTypes": {
+    "40_1": "40(1) Salary / Wages",
+    "40_2": "40(2) Commissions / Fees",
+    "40_3": "40(3) Goodwill / Royalties",
+    "40_4_a": "40(4)(a) Interest",
+    "40_4_b": "40(4)(b) Dividends",
+    "40_5": "40(5) Rent",
+    "40_6": "40(6) Professional fees",
+    "40_7": "40(7) Contractor fees",
+    "40_8": "40(8) Services / Other"
+  },
+  "WhtPayment": {
+    "withheld": "Withheld from payment",
+    "paid_for_payee": "Paid by payer in full",
+    "other": "Other"
+  },
   "Items": {
     "title": "Items",
     "subtitle": "Goods and services you sell.",

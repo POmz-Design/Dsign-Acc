@@ -2,7 +2,7 @@
 
 import { useTransition, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Download, Ban } from "lucide-react";
+import { Download, Ban, FileText } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useRouter } from "@/i18n/routing";
+import { Link, useRouter } from "@/i18n/routing";
 import { voidDocument } from "@/app/actions/documents";
 import { cn } from "@/lib/utils";
 import type { DocumentRow, DocumentLineRow } from "@/lib/db/schema";
@@ -40,6 +40,7 @@ function fmt(n: string | number): string {
 export function DocumentDetailClient({ document: doc, lines }: Props) {
   const t = useTranslations("Documents");
   const tCommon = useTranslations("Common");
+  const tWht = useTranslations("Wht");
   const router = useRouter();
   const [pending, startTransition] = useTransition();
   const [confirmVoid, setConfirmVoid] = useState(false);
@@ -104,6 +105,14 @@ export function DocumentDetailClient({ document: doc, lines }: Props) {
           {isInvoice ? (
             <Button variant="outline" disabled title={t("actions.phase3")}>
               {t("actions.generateReceipt")}
+            </Button>
+          ) : null}
+          {isInvoice && !isVoid ? (
+            <Button asChild variant="outline">
+              <Link href={`/wht/new?fromInvoice=${doc.id}`}>
+                <FileText className="h-4 w-4" />
+                <span className="ml-2">{tWht("issueFromInvoice")}</span>
+              </Link>
             </Button>
           ) : null}
         </div>

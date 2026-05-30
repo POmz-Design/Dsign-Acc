@@ -229,6 +229,63 @@ export const documentLines = pgTable("document_lines", {
   lineTotal: numeric("lineTotal", { precision: 14, scale: 2 }).notNull(),
 });
 
+// -------------------- Phase 3: WHT certificates --------------------
+
+// One table for ภ.ง.ด. 3 / ภ.ง.ด. 53 certificates. Uses the same
+// `document_counters` machinery as Phase 2 by passing docType="wht".
+//
+// Snapshots (customer + company) freeze identifying info at issue time so
+// the cert stays reproducible if the underlying records change later.
+//
+// `incomeTypes` is a small jsonb array (1–8 rows per form) — we deliberately
+// don't normalize it into a child table because each row is metadata-only
+// and never queried independently.
+export const whtCertificates = pgTable(
+  "wht_certificates",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    companyId: uuid("companyId")
+      .notNull()
+      .references(() => companies.id, { onDelete: "cascade" }),
+    // Soft link — if the customer is deleted later the cert keeps its
+    // snapshot but loses the live FK.
+    customerId: uuid("customerId").references(() => customers.id),
+    // Optional link to the invoice that triggered the WHT. Enables the
+    // "issue WHT cert from invoice" workflow without coupling lifecycles.
+    invoiceId: uuid("invoiceId").references(() => documents.id),
+    runningNumber: text("runningNumber").notNull(),
+    year: integer("year").notNull(),
+    // "pnd3" | "pnd53"
+    formType: text("formType").notNull(),
+    customerSnapshot: jsonb("customerSnapshot").notNull(),
+    companySnapshot: jsonb("companySnapshot").notNull(),
+    // WhtIncomeLine[] — see src/lib/documents/wht-types.ts
+    incomeTypes: jsonb("incomeTypes").notNull(),
+    paymentDate: date("paymentDate", { mode: "string" }).notNull(),
+    // "withheld" | "paid_for_payee" | "other"
+    paymentMethod: text("paymentMethod").notNull().default("withheld"),
+    totalGross: numeric("totalGross", { precision: 14, scale: 2 }).notNull(),
+    totalWithheld: numeric("totalWithheld", {
+      precision: 14,
+      scale: 2,
+    }).notNull(),
+    notes: text("notes"),
+    status: text("status").notNull().default("issued"),
+    issuedAt: timestamp("issuedAt", { mode: "date" }),
+    createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
+    updatedAt: timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
+  },
+  (t) => ({
+    // Running number is unique per company across all years — the prefix
+    // already encodes the year, and Phase 2 enforces same constraint for
+    // documents via (companyId, type, runningNumber).
+    uniqRunning: unique("wht_certificates_uniq_running").on(
+      t.companyId,
+      t.runningNumber,
+    ),
+  }),
+);
+
 // -------------------- Relations --------------------
 
 export const usersRelations = relations(users, ({ one }) => ({
@@ -246,6 +303,7 @@ export const companiesRelations = relations(companies, ({ one, many }) => ({
   customers: many(customers),
   items: many(items),
   documents: many(documents),
+  whtCertificates: many(whtCertificates),
 }));
 
 export const customersRelations = relations(customers, ({ one, many }) => ({
@@ -254,6 +312,7 @@ export const customersRelations = relations(customers, ({ one, many }) => ({
     references: [companies.id],
   }),
   documents: many(documents),
+  whtCertificates: many(whtCertificates),
 }));
 
 export const itemsRelations = relations(items, ({ one }) => ({
@@ -273,7 +332,26 @@ export const documentsRelations = relations(documents, ({ one, many }) => ({
     references: [customers.id],
   }),
   lines: many(documentLines),
+  whtCertificates: many(whtCertificates),
 }));
+
+export const whtCertificatesRelations = relations(
+  whtCertificates,
+  ({ one }) => ({
+    company: one(companies, {
+      fields: [whtCertificates.companyId],
+      references: [companies.id],
+    }),
+    customer: one(customers, {
+      fields: [whtCertificates.customerId],
+      references: [customers.id],
+    }),
+    invoice: one(documents, {
+      fields: [whtCertificates.invoiceId],
+      references: [documents.id],
+    }),
+  }),
+);
 
 export const documentLinesRelations = relations(documentLines, ({ one }) => ({
   document: one(documents, {
@@ -300,6 +378,10 @@ export type NewCustomer = typeof customers.$inferInsert;
 export type Item = typeof items.$inferSelect;
 export type NewItem = typeof items.$inferInsert;
 
+// Note: `DocType` (canonical) lives in `src/lib/documents/types.ts` and is
+// the single source of truth used by numbering + counter machinery. This
+// alias is kept narrow (no "wht") because it represents *document rows*
+// in the `documents` table — WHT certs live in their own table.
 export type DocType = "quotation" | "invoice" | "receipt";
 
 export type DocumentRow = typeof documents.$inferSelect;
@@ -309,3 +391,30 @@ export type DocumentLineRow = typeof documentLines.$inferSelect;
 export type NewDocumentLineRow = typeof documentLines.$inferInsert;
 
 export type DocumentCounterRow = typeof documentCounters.$inferSelect;
+
+// -------------------- Phase 3 inferred types --------------------
+
+export type WhtCertificateRow = typeof whtCertificates.$inferSelect;
+export type NewWhtCertificateRow = typeof whtCertificates.$inferInsert;
+
+export type WhtFormType = "pnd3" | "pnd53";
+
+export type WhtIncomeTypeCode =
+  | "40_1"
+  | "40_2"
+  | "40_3"
+  | "40_4_a"
+  | "40_4_b"
+  | "40_5"
+  | "40_6"
+  | "40_7"
+  | "40_8";
+
+export type WhtIncomeLine = {
+  code: WhtIncomeTypeCode;
+  description: string;
+  paymentDate: string;
+  grossAmount: number;
+  rate: number;
+  withheldAmount: number;
+};

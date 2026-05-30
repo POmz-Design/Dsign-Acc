@@ -3,6 +3,13 @@
 
 export type DocType = "quotation" | "invoice" | "receipt";
 
+// Union used by the running-number counter machinery. Phase 3 added "wht"
+// so WHT certificates can share the `document_counters` table. Kept
+// separate from `DocType` because `DocumentPayload.type` and the PDF
+// `DOC_TITLES` map only handle real documents — WHT certs live in their
+// own table with their own PDF.
+export type CounterDocType = DocType | "wht";
+
 export type CustomerSnapshot = {
   name: string;
   tin: string | null;
@@ -65,8 +72,9 @@ export type DocumentPayload = {
   whtRate: number | null; // applied at doc level; Phase 3 will refine
 };
 
-export const DOC_TYPE_PREFIX: Record<DocType, string> = {
+export const DOC_TYPE_PREFIX: Record<CounterDocType, string> = {
   quotation: "Q",
   invoice: "INV",
   receipt: "RCP",
+  wht: "WHT",
 };

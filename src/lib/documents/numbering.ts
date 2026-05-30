@@ -4,7 +4,7 @@ import { sql } from "drizzle-orm";
 
 import { db } from "@/lib/db";
 import { documentCounters } from "@/lib/db/schema";
-import { DOC_TYPE_PREFIX, type DocType } from "./types";
+import { DOC_TYPE_PREFIX, type CounterDocType } from "./types";
 
 // Always called from inside `db.transaction(async tx => …)`. We pull the
 // `tx` type out of `db.transaction` so this keeps working if the
@@ -25,7 +25,7 @@ export type Tx = Parameters<Parameters<typeof db.transaction>[0]>[0];
 export async function nextRunningNumber(
   tx: Tx,
   companyId: string,
-  docType: DocType,
+  docType: CounterDocType,
   year: number,
 ): Promise<string> {
   // Drizzle's `onConflictDoUpdate` lets us pass an `excluded`-style update

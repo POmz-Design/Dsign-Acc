@@ -1,5 +1,9 @@
+import { redirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { PlaceholderPage } from "@/components/app/placeholder-page";
+
+import { WhtClient } from "@/components/app/wht-client";
+import { getWhtCertificates } from "@/app/actions/wht";
+import { requireCompany } from "@/lib/queries/company";
 
 export default async function Page({
   params,
@@ -8,5 +12,9 @@ export default async function Page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <PlaceholderPage titleKey="wht" phase={3} />;
+  const { company } = await requireCompany();
+  if (!company) redirect(`/${locale}/settings?onboarding=1`);
+
+  const certificates = await getWhtCertificates();
+  return <WhtClient certificates={certificates} />;
 }
