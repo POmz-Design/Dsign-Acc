@@ -1,164 +1,84 @@
-# Dsign Accounting Website
+# Dsign Accounting Workspace
 
-Professional website for Dsign Accounting Co., Ltd. - A comprehensive accounting services firm.
+Web application for a Thai accounting firm. Marketing site + authenticated workspace
+for quotations, tax invoices, receipts, withholding tax, and tax estimation.
 
-## Overview
+## Stack
 
-This is a clean, modern, and professional website designed for Dsign Accounting, targeting SME (Small and Medium Enterprises) clients in Thailand. The website showcases the firm's services, expertise, and reliability.
+- Next.js 15 (App Router) + React 19 + TypeScript 5
+- Tailwind CSS 3 + shadcn/ui
+- Drizzle ORM + Postgres
+- Auth.js v5 (Credentials + Google) with Drizzle adapter
+- next-intl for Thai / English (locale in URL)
+- react-pdf for document rendering (Phase 2+)
+- Resend for transactional email (Phase 5+)
 
-## Features
+## Install
 
-- **Professional Design**: Clean and modern design with teal brand colors
-- **Responsive Layout**: Fully responsive design that works on all devices (desktop, tablet, mobile)
-- **Service Showcase**: Comprehensive display of all accounting services offered
-- **FAQ Section**: 8 common accounting questions answered in Thai language
-- **Contact Form**: Email contact functionality for client inquiries
-- **Trust Indicators**: Display of credentials (10+ years experience, CPA & CPD certified)
-- **Smooth Navigation**: Sticky navigation bar with smooth scrolling
-- **Interactive Elements**: FAQ accordion, mobile menu, form validation
-
-## Services Offered
-
-1. รับทำบัญชีรายเดือน (Monthly Accounting)
-2. ปิดงบการเงินรายปี (Annual Financial Statements)
-3. ที่ปรึกษาภาษีอากร (Tax Consulting)
-4. รับตรวจสอบบัญชี (Auditing Services)
-5. วางระบบบัญชี (Accounting System Setup)
-6. งานทะเบียน (Business Registration)
-7. วางแผนภาษี (Tax Planning)
-8. ให้คำปรึกษา (Consulting Services)
-
-## Technologies Used
-
-- HTML5
-- CSS3 (Custom styling with CSS variables)
-- Vanilla JavaScript
-- Google Fonts (Kanit & Prompt - Thai fonts)
-
-## File Structure
-
-```
-Dsign-Acc/
-├── index.html          # Main HTML file
-├── styles.css          # Stylesheet
-├── script.js           # JavaScript functionality
-├── logo.png           # Company logo (to be added)
-└── README.md          # This file
+```bash
+npm install
+cp .env.example .env.local
+# fill in DATABASE_URL, AUTH_SECRET, etc.
+npm run db:push   # creates auth tables in the dev database
+npm run dev
 ```
 
-## Setup Instructions
+App runs at `http://localhost:3000` and redirects to `/th` by default.
 
-1. **Add Logo**: Place your company logo image as `logo.png` in the root directory
-2. **Update Contact Information**: Edit the phone number and address in `index.html`
-3. **Customize Email**: The contact form is set to send emails to `info@dsignaccounting.com`
+## Environment variables
 
-## Customization
+| Variable | Required | Notes |
+|---|---|---|
+| `DATABASE_URL` | yes | Postgres connection string |
+| `AUTH_SECRET` | yes | 32-byte random string. `npx auth secret` |
+| `AUTH_URL` | prod | Public base URL with no trailing slash |
+| `AUTH_GOOGLE_ID` | optional | Google OAuth client id |
+| `AUTH_GOOGLE_SECRET` | optional | Google OAuth client secret |
+| `RESEND_API_KEY` | later | Used from Phase 5 onwards |
+| `EMAIL_FROM` | later | Sender identity for Resend |
 
-### Colors
-The website uses CSS variables for easy color customization. Edit in `styles.css`:
+## Scripts
 
-```css
-:root {
-    --primary-color: #17a2b8;      /* Main teal color */
-    --primary-dark: #138496;       /* Darker teal */
-    --accent-color: #28a745;       /* Green accent */
-}
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Local dev server |
+| `npm run build` | Production build |
+| `npm start` | Run production build |
+| `npm run lint` | ESLint |
+| `npm run db:generate` | Generate Drizzle migration SQL |
+| `npm run db:migrate` | Apply migrations |
+| `npm run db:push` | Push schema directly (dev convenience) |
+| `npm run db:studio` | Drizzle Studio UI |
+
+## Deploy to Railway
+
+1. Create a Railway project, attach a Postgres plugin.
+2. Set the env vars from the table above in the Railway service.
+3. Push this repo — Railway picks up `railway.json` and runs `npm run build`, then `npm start`.
+4. Run `npm run db:push` once against the production database, or wire it into a release step.
+
+## Project layout
+
+```
+src/
+  app/                Next.js App Router
+    [locale]/         All routes live under a locale prefix
+      (marketing)/    Public marketing pages
+      (app)/          Authed workspace
+      login, signup
+    api/auth/[...nextauth]/
+  components/         UI components (shadcn under ui/)
+  i18n/               next-intl config
+  lib/
+    auth.ts           Auth.js v5 config
+    db/               Drizzle schema + client
+    utils.ts
+  middleware.ts       i18n + auth gate
+messages/             th.json, en.json
 ```
 
-### Contact Email
-To change the contact email, edit the `mailto:` link in `script.js`:
+## Phase 0 scope
 
-```javascript
-const mailtoLink = `mailto:YOUR_EMAIL@domain.com?subject=...`;
-```
-
-### Phone Number
-Update the phone number in the contact section of `index.html`:
-
-```html
-<p>02-XXX-XXXX</p>
-```
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Key Features for SMEs
-
-The website is specifically designed to appeal to SME clients by:
-
-- Highlighting reliability and trustworthiness
-- Showcasing professional credentials (CPA, CPD)
-- Emphasizing 10+ years of experience
-- Clear, transparent pricing approach
-- Comprehensive one-stop service offering
-- Thai language content for local market
-
-## Contact Form Functionality
-
-The contact form uses a `mailto:` link to open the user's default email client. This approach:
-- Requires no backend server
-- Works on all devices
-- Maintains privacy
-- Simple to implement
-
-For a more advanced solution with form submission to a server, consider integrating with services like:
-- FormSpree
-- Netlify Forms
-- Google Forms
-- Custom backend with PHP/Node.js
-
-## FAQ Section
-
-The FAQ section includes 8 common questions about accounting in Thai:
-1. Do SMEs need to do accounting?
-2. Deadline for financial statement submission
-3. Tax-deductible expenses
-4. Benefits of hiring an accounting firm
-5. When to start accounting for new companies
-6. VAT registration requirements
-7. Document retention period
-8. Tax planning benefits
-
-## Deployment
-
-This is a static website that can be deployed on:
-- **GitHub Pages**: Free hosting for static sites
-- **Netlify**: Free tier with continuous deployment
-- **Vercel**: Free hosting with excellent performance
-- **Traditional Web Hosting**: Upload via FTP to any web server
-
-### Quick Deploy to GitHub Pages
-
-1. Push to GitHub repository
-2. Go to Settings > Pages
-3. Select branch and folder
-4. Save and wait for deployment
-
-## Future Enhancements
-
-Potential additions for future versions:
-- Blog section for accounting tips
-- Client testimonials
-- Case studies
-- Online booking system
-- Live chat integration
-- Multilingual support (English version)
-- Service pricing calculator
-- Document upload portal for clients
-
-## License
-
-© 2026 Dsign Accounting Co., Ltd. All rights reserved.
-
-## Support
-
-For website issues or customization requests, please contact the development team.
-
----
-
-**Note**: Remember to replace the placeholder phone number (02-XXX-XXXX) with your actual contact number before going live.
+This is the scaffold only. Marketing page is fully ported, auth flow boots end-to-end,
+the authed workspace renders placeholder pages. Document generation, PDF, email, and
+business logic land in later phases.
