@@ -35,6 +35,9 @@ export function Navbar() {
           <Button asChild size="sm" variant="outline">
             <Link href="/login">{t("login")}</Link>
           </Button>
+          <Button asChild size="sm" className="hidden sm:inline-flex">
+            <Link href="/signup">{t("signup")}</Link>
+          </Button>
         </div>
       </div>
     </header>
