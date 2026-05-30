@@ -181,5 +181,102 @@
     "label": "Language",
     "th": "ไทย",
     "en": "English"
+  },
+  "Common": {
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "loading": "Loading...",
+    "required": "Required",
+    "yes": "Yes",
+    "no": "No",
+    "hintDigits": "Must be {count} digits",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorValidation": "Please check the form for errors."
+  },
+  "Settings": {
+    "title": "Company settings",
+    "subtitle": "These details appear on every document you issue.",
+    "onboardingBanner": "Set up your company info to start issuing documents.",
+    "savedSuccess": "Saved successfully.",
+    "savedError": "Save failed. Please try again.",
+    "fields": {
+      "nameTh": "Company name (Thai)",
+      "nameEn": "Company name (English)",
+      "tin": "Taxpayer ID",
+      "branchCode": "Branch code",
+      "branchCodeHint": "Head office uses 00000.",
+      "addressTh": "Address (Thai)",
+      "addressEn": "Address (English)",
+      "phone": "Phone",
+      "email": "Email",
+      "logoUrl": "Logo URL",
+      "signatureUrl": "Signature URL",
+      "uploadComingSoon": "Upload coming in a later phase — paste a URL for now.",
+      "defaultVatRate": "Default VAT rate (%)",
+      "defaultCurrency": "Default currency"
+    }
+  },
+  "Customers": {
+    "title": "Customers",
+    "subtitle": "Manage your customer list.",
+    "addButton": "New customer",
+    "createTitle": "Add a new customer",
+    "editTitle": "Edit customer",
+    "deleteTitle": "Delete customer",
+    "deleteConfirm": "Delete \"{name}\"? This cannot be undone.",
+    "empty": "No customers yet — add your first.",
+    "saveError": "Save failed. Please try again.",
+    "table": {
+      "name": "Name",
+      "tin": "TIN",
+      "email": "Email",
+      "phone": "Phone",
+      "actions": "Actions"
+    },
+    "fields": {
+      "name": "Name",
+      "tin": "Taxpayer ID",
+      "branchCode": "Branch code",
+      "isJuristic": "Juristic entity (company / partnership)",
+      "address": "Address",
+      "email": "Email",
+      "phone": "Phone",
+      "notes": "Notes"
+    }
+  },
+  "Items": {
+    "title": "Items",
+    "subtitle": "Goods and services you sell.",
+    "addButton": "New item",
+    "createTitle": "Add a new item",
+    "editTitle": "Edit item",
+    "deleteTitle": "Delete item",
+    "deleteConfirm": "Delete \"{name}\"? This cannot be undone.",
+    "empty": "No items yet — add your first.",
+    "saveError": "Save failed. Please try again.",
+    "table": {
+      "name": "Name",
+      "unit": "Unit",
+      "unitPrice": "Unit price",
+      "vat": "VAT",
+      "wht": "WHT",
+      "active": "Active",
+      "actions": "Actions"
+    },
+    "fields": {
+      "name": "Name",
+      "description": "Description",
+      "unit": "Unit",
+      "unitPrice": "Unit price (THB)",
+      "vatApplicable": "VAT applicable",
+      "whtRate": "Withholding tax rate",
+      "whtRateHint": "Pick \"None\" if no WHT applies.",
+      "whtNone": "None",
+      "isActive": "Active"
+    }
   }
 }

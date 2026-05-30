@@ -1,5 +1,9 @@
+import { redirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { PlaceholderPage } from "@/components/app/placeholder-page";
+
+import { ItemsClient } from "@/components/app/items-client";
+import { getItems } from "@/app/actions/items";
+import { requireCompany } from "@/lib/queries/company";
 
 export default async function Page({
   params,
@@ -8,5 +12,12 @@ export default async function Page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <PlaceholderPage titleKey="items" phase={1} />;
+
+  const { company } = await requireCompany();
+  if (!company) {
+    redirect(`/${locale}/settings?onboarding=1`);
+  }
+
+  const items = await getItems();
+  return <ItemsClient items={items} />;
 }
