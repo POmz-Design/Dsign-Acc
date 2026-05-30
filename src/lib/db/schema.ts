@@ -3,10 +3,13 @@ import {
   text,
   timestamp,
   primaryKey,
+  unique,
   integer,
   uuid,
   numeric,
   boolean,
+  date,
+  jsonb,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 import type { AdapterAccount } from "next-auth/adapters";
@@ -139,6 +142,93 @@ export const items = pgTable("items", {
   updatedAt: timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
 });
 
+// -------------------- Phase 2: documents --------------------
+
+// Per-(company, docType, year) atomic counter for running numbers.
+// Bumped via an UPSERT-with-RETURNING — no FOR UPDATE needed because
+// Postgres serializes ON CONFLICT writes on the conflicting tuple.
+export const documentCounters = pgTable(
+  "document_counters",
+  {
+    companyId: uuid("companyId")
+      .notNull()
+      .references(() => companies.id, { onDelete: "cascade" }),
+    docType: text("docType").notNull(),
+    year: integer("year").notNull(),
+    nextValue: integer("nextValue").notNull().default(1),
+  },
+  (t) => ({
+    pk: primaryKey({ columns: [t.companyId, t.docType, t.year] }),
+  }),
+);
+
+// documents — polymorphic table for quotation / invoice / receipt.
+// customerSnapshot + companySnapshot + jsonPayload freeze the payload at
+// issuance so the PDF remains reproducible even if upstream records change.
+export const documents = pgTable(
+  "documents",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    companyId: uuid("companyId")
+      .notNull()
+      .references(() => companies.id, { onDelete: "cascade" }),
+    type: text("type").notNull(),
+    runningNumber: text("runningNumber").notNull(),
+    year: integer("year").notNull(),
+    // Soft-link to customer — no cascade. If a customer is deleted later
+    // the document keeps its snapshot but loses the live link.
+    customerId: uuid("customerId").references(() => customers.id),
+    issueDate: date("issueDate", { mode: "string" }).notNull(),
+    dueDate: date("dueDate", { mode: "string" }),
+    status: text("status").notNull().default("draft"),
+    customerSnapshot: jsonb("customerSnapshot").notNull(),
+    companySnapshot: jsonb("companySnapshot").notNull(),
+    notes: text("notes"),
+    subtotal: numeric("subtotal", { precision: 14, scale: 2 }).notNull(),
+    vatAmount: numeric("vatAmount", { precision: 14, scale: 2 })
+      .notNull()
+      .default("0.00"),
+    whtAmount: numeric("whtAmount", { precision: 14, scale: 2 })
+      .notNull()
+      .default("0.00"),
+    total: numeric("total", { precision: 14, scale: 2 }).notNull(),
+    netPayable: numeric("netPayable", { precision: 14, scale: 2 }).notNull(),
+    currency: text("currency").notNull().default("THB"),
+    jsonPayload: jsonb("jsonPayload").notNull(),
+    issuedAt: timestamp("issuedAt", { mode: "date" }),
+    createdAt: timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
+    updatedAt: timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
+  },
+  (t) => ({
+    // Same running number can never be reused within (company, type, year).
+    uniqRunning: unique("documents_uniq_running").on(
+      t.companyId,
+      t.type,
+      t.runningNumber,
+    ),
+  }),
+);
+
+export const documentLines = pgTable("document_lines", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  documentId: uuid("documentId")
+    .notNull()
+    .references(() => documents.id, { onDelete: "cascade" }),
+  sortOrder: integer("sortOrder").notNull(),
+  // Null for free-text lines. Soft-link — items can be deleted later.
+  itemId: uuid("itemId").references(() => items.id),
+  description: text("description").notNull(),
+  quantity: numeric("quantity", { precision: 14, scale: 3 }).notNull(),
+  unitPrice: numeric("unitPrice", { precision: 14, scale: 2 }).notNull(),
+  discountPercent: numeric("discountPercent", { precision: 5, scale: 2 })
+    .notNull()
+    .default("0.00"),
+  vatRate: numeric("vatRate", { precision: 5, scale: 2 })
+    .notNull()
+    .default("0.00"),
+  lineTotal: numeric("lineTotal", { precision: 14, scale: 2 }).notNull(),
+});
+
 // -------------------- Relations --------------------
 
 export const usersRelations = relations(users, ({ one }) => ({
@@ -155,19 +245,44 @@ export const companiesRelations = relations(companies, ({ one, many }) => ({
   }),
   customers: many(customers),
   items: many(items),
+  documents: many(documents),
 }));
 
-export const customersRelations = relations(customers, ({ one }) => ({
+export const customersRelations = relations(customers, ({ one, many }) => ({
   company: one(companies, {
     fields: [customers.companyId],
     references: [companies.id],
   }),
+  documents: many(documents),
 }));
 
 export const itemsRelations = relations(items, ({ one }) => ({
   company: one(companies, {
     fields: [items.companyId],
     references: [companies.id],
+  }),
+}));
+
+export const documentsRelations = relations(documents, ({ one, many }) => ({
+  company: one(companies, {
+    fields: [documents.companyId],
+    references: [companies.id],
+  }),
+  customer: one(customers, {
+    fields: [documents.customerId],
+    references: [customers.id],
+  }),
+  lines: many(documentLines),
+}));
+
+export const documentLinesRelations = relations(documentLines, ({ one }) => ({
+  document: one(documents, {
+    fields: [documentLines.documentId],
+    references: [documents.id],
+  }),
+  item: one(items, {
+    fields: [documentLines.itemId],
+    references: [items.id],
   }),
 }));
 
@@ -184,3 +299,13 @@ export type NewCustomer = typeof customers.$inferInsert;
 
 export type Item = typeof items.$inferSelect;
 export type NewItem = typeof items.$inferInsert;
+
+export type DocType = "quotation" | "invoice" | "receipt";
+
+export type DocumentRow = typeof documents.$inferSelect;
+export type NewDocumentRow = typeof documents.$inferInsert;
+
+export type DocumentLineRow = typeof documentLines.$inferSelect;
+export type NewDocumentLineRow = typeof documentLines.$inferInsert;
+
+export type DocumentCounterRow = typeof documentCounters.$inferSelect;

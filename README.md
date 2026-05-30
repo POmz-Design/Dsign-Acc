@@ -82,3 +82,25 @@ messages/             th.json, en.json
 This is the scaffold only. Marketing page is fully ported, auth flow boots end-to-end,
 the authed workspace renders placeholder pages. Document generation, PDF, email, and
 business logic land in later phases.
+
+## Phase 2 — documents & PDFs
+
+Phase 2 ships quotation / tax invoice / receipt issuance with PDF download.
+
+After cloning, fetch the Sarabun font files used by the PDF renderer once:
+
+```bash
+bash scripts/download-fonts.sh
+```
+
+This downloads `Sarabun-Regular.ttf` and `Sarabun-Bold.ttf` from the upstream
+Google Fonts repository into `public/fonts/`. Commit the files so the PDF
+route can find them in production. The font is published under SIL OFL.
+
+Then push the new schema:
+
+```bash
+npm run db:push
+```
+
+Tables added: `documents`, `document_lines`, `document_counters`.

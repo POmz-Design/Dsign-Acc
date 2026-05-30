@@ -1,5 +1,9 @@
+import { redirect } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { PlaceholderPage } from "@/components/app/placeholder-page";
+
+import { DocumentsClient } from "@/components/app/documents-client";
+import { getDocuments } from "@/app/actions/documents";
+import { requireCompany } from "@/lib/queries/company";
 
 export default async function Page({
   params,
@@ -8,5 +12,9 @@ export default async function Page({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <PlaceholderPage titleKey="invoices" phase={2} />;
+  const { company } = await requireCompany();
+  if (!company) redirect(`/${locale}/settings?onboarding=1`);
+
+  const docs = await getDocuments("invoice");
+  return <DocumentsClient type="invoice" documents={docs} />;
 }
